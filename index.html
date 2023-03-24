@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <section class="sign-up">
+    <section class="sign-up" id="blur">
         <form action="">
             <div class="input-field">
                 <h1>Sign Up</h1>
@@ -46,12 +46,13 @@
                 </div>
             </div>
 
-            <div class="image-field">
-                <label for="imageupload"><div><img src="./profile.png" alt=""></div></label>
+            <div class="image-field" onclick="toggle()">
+                <label for=""><div><img src="./profile.png" alt=""></div></label>
                 <div><input type="file" accept="" id="imageupload" class="imageupload"></div>
                 <label for="imageupload"><button><i class='bx bx-cloud-upload' ></i>Upload Photo</button></label>
             </div>
         </form>
     </section>
+    <script src="popup.js"></script>
 </body>
 </html>
