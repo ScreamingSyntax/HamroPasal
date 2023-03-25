@@ -1,0 +1,12 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: content-box;
+}
+
+.mainin{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
