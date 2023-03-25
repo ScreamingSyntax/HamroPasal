@@ -1,0 +1,36 @@
+.products{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+    margin-top: 20px;
+    width: 100%;
+    padding-bottom: 50px;
+}
+.product{
+    width: 300px;
+    background-color: #F6F6F6;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding: 20px 0;
+}
+.product img{
+    width: 60%;
+}
+.product p{
+    margin-top: 20px;
+    font-size: 14px;
+}
+.product span{
+    font-size: 27px;
+    font-weight: 900;
+    color: var(--mainColor);
+}
+.product .add-btn{
+    border: 2px solid var(--mainColor);
+    padding: 3px 20px;
+    font-size: 16px;
+    font-weight: 500;
+}
