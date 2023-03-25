@@ -1,13 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Tilt+Neon&display=swap');
 
-*{
-    margin: 0;
-    padding: 0;
-    box-sizing: content-box;
-    font-family: 'Tilt Neon', cursive;
-
-}
-
 .maincontainer{
     background-color: #F3F0F0;
     height: 480px;
@@ -21,7 +13,12 @@
     justify-content: center;
     align-items: center;
     border-radius: 5px;
+    font-family: 'Tilt Neon', cursive;
 
+}
+.active{
+    background-color: rgba(0, 0, 0, 0.4);
+    z-index: 0;
 }
 
 .secondcontainer{
@@ -35,7 +32,7 @@
     border-radius: 10px;
     justify-content: center;
     align-items: center;
-
+    font-family: 'Tilt Neon', cursive;
 }
 
 #upload-icon {
@@ -44,6 +41,7 @@
     position: relative;
     bottom: 2rem;
     opacity: 0.5;
+    cursor: pointer;
 }
 
 .firstparagraph{
@@ -51,6 +49,7 @@
     bottom: 2rem;
     font-size: 1.4rem;
     opacity: 50%;
+    font-family: 'Tilt Neon', cursive;
 }
 .heading4{
     font-size: 1.7rem;
@@ -58,6 +57,13 @@
     bottom: 0.7rem;
     font-weight: 1rem;
     opacity: 0.7;
+    font-family: 'Tilt Neon', cursive;
 }
-
+.fa-sharp{
+    position: relative;
+    left: 23.5rem;
+    bottom: 4rem;
+    font-size: 1.5rem;
+    cursor: pointer;
+}
 

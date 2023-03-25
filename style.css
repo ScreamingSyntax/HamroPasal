@@ -2,6 +2,8 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    filter: blur(0);
+    transition: filter 0.3s ease;
 }
 .sign-up{
     width: 100%;
@@ -11,12 +13,6 @@
     justify-content: center;
     padding: 20px 6%;
 }
-.sign-up#blur.active{
-    filter: blur(5px);
-    pointer-events: none;
-    user-select: none;
-}
-
 form{
     width: 90%;
     height: 90%;
@@ -182,7 +178,12 @@ input[type="file"]{
     background-image: url("profile.png");
     background-size: contain;
 }
-
-.imageupload{
-    opacity: 0;
+#overlay{
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgb(0, 0, 0, .5);
+    pointer-events: none;
 }

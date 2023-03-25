@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -8,9 +9,12 @@
 
     <link rel="stylesheet" href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="popup.css">
+    \<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
 </head>
+
 <body>
-    <section class="sign-up" id="blur">
+    <section class="sign-up" >
         <form action="">
             <div class="input-field">
                 <h1>Sign Up</h1>
@@ -19,15 +23,15 @@
                     <input type="text" id="name" placeholder="Enter Full Name">
                 </span>
                 <span class="email">
-                    <label for="email"><i class='bx bxl-gmail' ></i></label>
+                    <label for="email"><i class='bx bxl-gmail'></i></label>
                     <input type="text" id="email" placeholder="Your Email Address">
                 </span>
                 <span class="password">
-                    <label for="password"><i class='bx bx-dialpad-alt' ></i></label>
+                    <label for="password"><i class='bx bx-dialpad-alt'></i></label>
                     <input type="text" id="password" placeholder="Enter Password">
                 </span>
                 <span class="confirm-password">
-                    <label for="confirm-password"><i class='bx bxs-key' ></i></label>
+                    <label for="confirm-password"><i class='bx bxs-key'></i></label>
                     <input type="text" id="confirm-password" placeholder="Re-Enter Password">
                 </span>
                 <span class="agreement">
@@ -46,13 +50,24 @@
                 </div>
             </div>
 
-            <div class="image-field" onclick="toggle()">
-                <label for=""><div><img src="./profile.png" alt=""></div></label>
-                <div><input type="file" accept="" id="imageupload" class="imageupload"></div>
-                <label for="imageupload"><button><i class='bx bx-cloud-upload' ></i>Upload Photo</button></label>
+            <div class="image-field" id="image-field">
+                <label for="">
+                    <div><img src="./profile.png" alt=""></div>
+                </label>
+                <!-- <div><input type="file" accept="" id="imageupload" class="imageupload"></div> -->
+                <label for="imageupload"><button><i class='bx bx-cloud-upload'></i>Upload Photo</button></label>
             </div>
         </form>
+        <div class="maincontainer" id="maincontainer">
+            <i class="fa-sharp fa-solid fa-xmark"></i>
+            <h4 class="heading4">Upload Your Profile Image</h4>
+            <div class="secondcontainer">
+                <i class='bx bx-cloud-upload' id="upload-icon"></i>
+                <p class="firstparagraph">Drag and Drop or Browse to Choose a File</p>
+            </div>
+        </div>
     </section>
     <script src="popup.js"></script>
 </body>
+
 </html>
