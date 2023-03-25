@@ -21,7 +21,7 @@ imagefield.addEventListener("click", ()=>{
     // maincontainer.classList.toggle('active')
     maincontainer.style.display = 'flex'
     body.classList.add('active')
-    // body.style.backdropFilter = 'blur(5px)'
+    body.style.backdropFilter = 'blur(5px)'
 })
 
 closeButton.addEventListener("click", ()=>{
