@@ -3,6 +3,9 @@
     padding: 0;
     box-sizing: border-box;
 }
+:root{
+    --mainColor: #6C63FF;
+}
 .sign-up{
     width: 100%;
     height: 100vh;
@@ -43,7 +46,7 @@ form .input-field span{
 }
 .name, .email, .password, .confirm-password{
     flex-direction: row-reverse;
-    background-color: rgba(0, 0, 255, 0.336);
+    background-color: #E4F0FE;
     margin-left: 63px;
     width: 300px;
     padding: 0 20px;
@@ -86,8 +89,7 @@ input[type="submit"]{
     height: 40px;
     outline: none;
     border: none;
-    background-color: rebeccapurple;
-    background: linear-gradient(to right, rebeccapurple, blue);
+    background: linear-gradient(to right, var(--mainColor), blue);
     border-radius: 3px;
     color: white;
     font-weight: 500;
@@ -173,6 +175,4 @@ input[type="file"]{
     height: 100%;
     display: flex;
     flex-direction: column;
-    background-image: url("profile.png");
-    background-size: contain;
 }
