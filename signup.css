@@ -11,7 +11,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 20px 6%;
+    padding: 0px 6%;
 }
 form{
     width: 90%;
@@ -45,7 +45,7 @@ form .input-field span{
 }
 .name, .email, .password, .confirm-password{
     flex-direction: row-reverse;
-    background-color: rgba(0, 0, 255, 0.336);
+    background: #E4F0FE;
     margin-left: 63px;
     width: 300px;
     padding: 0 20px;
@@ -88,8 +88,7 @@ input[type="submit"]{
     height: 40px;
     outline: none;
     border: none;
-    background-color: rebeccapurple;
-    background: linear-gradient(to right, rebeccapurple, blue);
+    background: #6C63FF;
     border-radius: 3px;
     color: white;
     font-weight: 500;
@@ -122,10 +121,10 @@ input[type="submit"]{
     display: flex;
     width: 300px;
     height: 40px;
-    border: 2px solid rebeccapurple;
+    border: 2px solid #6C63FF;
     background: none;
     border-radius: 3px;
-    color: rebeccapurple;
+    color: #6C63FF;
     font-weight: 700;
     font-size: 18px;
     margin-top: 7px;
@@ -153,11 +152,11 @@ input[type="submit"]{
 }
 .image-field button{
     outline: none;
-    border: 1px solid rebeccapurple;
+    border: 2px solid #6C63FF;
     padding: 5px 20px;
     border-radius: 3px;
     background: none;
-    color: rebeccapurple;
+    color: #6C63FF;
     font-size: 20px;
     font-weight: 500;
     display: flex;

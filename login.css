@@ -3,7 +3,14 @@
 *{
     margin: 0;
     padding: 0;
-    box-sizing: content-box;
+    box-sizing: border-box;
+}
+.login-form{
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 .first{
     /* width: 100%;
@@ -14,74 +21,63 @@
     justify-content: center;
     align-items: center;
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-    position: relative;
-    top: 3rem;
-    left: 13rem;
     border-radius: 3rem;
 }
 
 .mainin{
     display: flex;
     flex-direction: column;
+    justify-content: center;
+    align-items: center;
     gap: 10px;
     height: 25rem;
     width: 35rem;
-    position: relative;
+    /* position: relative;
     top: 10px;
-    left: 4rem;
+    left: 4rem; */
 }
 .first-heading{
-    position: relative;
-    left: 12rem;
     font-weight: 600;
     font-size: 35px;
-    top: 2rem;
     font-family: 'Tilt Neon', cursive;
 }
 .first-input{
     height: 2.8rem;
-    width: 16rem;
-    position: relative;
-    left: 7.5rem;
+    width: 20rem;
     border-radius: 4px;
     border: 2px solid #E4F0FE;
     background-color: #E4F0FE;
-    top: 2.5rem;
+    padding: 0 20px;
 }
 .second-input{
     height: 2.8rem;
-    width: 16rem;
-    position: relative;
-    left: 7.5rem;
+    width: 20rem;
     border-radius: 4px;
     border: 2px solid #E4F0FE;
     background-color: #E4F0FE;
-    top: 3rem;
+    padding: 0 20px;
 }
 
 .first-button{
-    height: 2.2rem;
-    width: 16rem;
-    position: relative;
-    left: 7.5rem;
+    height: 2.8rem;
+    width: 20rem;
+    margin-top: 15px;
+    cursor: pointer;
     border-radius: 4px;
     border: 2px solid #6C63FF;
     background-color: #6C63FF;
     color: #ffff;
     font-size: 20px;
-    top: 3.5rem;
     font-family: 'Tilt Neon', cursive;
 }
 .first-para{
-    position: relative;
-    left: 10.5rem;
     height: 5rem;
-    top: 4rem;
     font-family: 'Tilt Neon', cursive;
-
 }
 .first-para span{
     color: #6C63FF;
+    text-decoration: underline;
+    cursor: pointer;
 }
 .first-image{
     height: 25rem;
