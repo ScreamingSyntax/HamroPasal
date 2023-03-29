@@ -186,3 +186,18 @@ input[type="file"]{
     background-color: rgb(0, 0, 0, .5);
     pointer-events: none;
 }
+
+.return{
+    text-decoration: none;
+    color: white;
+    background-color: #6C63FF;
+    padding: 10px 20px;
+    border-radius: 5px;
+    border: 2px solid #6C63FF;
+    margin-top: 20px;
+}
+.return:hover{
+    background-color: white;
+    color: #6C63FF;
+    transition: all 0.5s ease;
+}

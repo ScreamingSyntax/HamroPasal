@@ -10,14 +10,23 @@ console.log(width)
 //     blur.classList.toggle('active')
 // }
 
-var imagefield = document.getElementById("image-field")
+var imagefield = document.querySelector(".image-field img")
+var btn = document.querySelector(".image-field button")
 var maincontainer = document.getElementById("maincontainer")
 var closeButton = document.querySelector(".fa-sharp")
 var body = document.querySelector("body")
 
 maincontainer.style.display = 'none'
 
-imagefield.addEventListener("click", ()=>{
+imagefield.addEventListener("click", (e)=>{
+    e.preventDefault()
+    // maincontainer.classList.toggle('active')
+    maincontainer.style.display = 'flex'
+    body.classList.add('active')
+    body.style.backdropFilter = 'blur(5px)'
+})
+
+btn.addEventListener("click", ()=>{
     // maincontainer.classList.toggle('active')
     maincontainer.style.display = 'flex'
     body.classList.add('active')
