@@ -10,11 +10,10 @@
     <title>Document</title>
 
     <link rel="stylesheet" href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
-    <link rel="stylesheet" href="./CSS/register.css">
+    <link rel="stylesheet" href="/HamroPasal/View/CSS/register.css">
     <link rel="stylesheet" href="./CSS/popup.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
 </head>
-
 <body>
     <section class="sign-up" >
         <form action="../registration" method="POST">
