@@ -1,0 +1,15 @@
+@charset "ISO-8859-1";
+:root{
+    --mainColor: #6c63FF;
+}
+.admin-header{
+	width: 100%;
+	display: flex;
+	justify-content: space-around;
+}
+.admin-header a{
+	border: 2px solid var(--mainColor);
+	padding: 10px 20px;
+	color: var(--mainColor);
+	text-decoration: none;
+}

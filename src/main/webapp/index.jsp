@@ -1,3 +1,6 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,8 +9,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
-    <link rel="stylesheet" href="./navbar.css">
-    <link rel="stylesheet" href="./home.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/View/CSS/navbar.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/View/CSS/home.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Mochiy+Pop+One&family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
@@ -31,45 +34,45 @@
             </form>
             <div class="icons">
                 <div class="cart">
-                    <img src="./Downloads/shopping-cart.png" alt="">
+                    <img src="${pageContext.request.contextPath}/View/Images/shopping-cart.png" alt="">
                 </div>
                 <div class="profile">
-                    <img src="./Downloads/user.png" alt="">
+                    <a href="${pageContext.request.contextPath}/View/Register.jsp"><img src="${pageContext.request.contextPath}/View/Images/user.png" alt=""></a>
                 </div>
             </div>
         </div>
     </header>
 
     <section class="banner">
-        <img src="./Downloads/home/10048b50700333.58d779ea99e37.gif" alt="">
+        <img src="${pageContext.request.contextPath}/View/Images/banner.gif" alt="">
     </section>
 
     <section class="products-section">
         <h2>Products</h2>
         <div class="products">
             <div class="product">
-                <img src="./Downloads/cloths/1.png" alt="">
+                <img src="./View/Images/cloths/1.png" alt="">
                 <p>Plain Blue T-Shirt</p>
                 <span>Rs 4000</span>
                 <span class="add-btn">Add to Cart</span>
             </div>
 
             <div class="product">
-                <img src="./Downloads/cloths/2.png" alt="">
+                <img src="./View/Images/cloths/2.png" alt="">
                 <p>Midnight Black T-Shirt</p>
                 <span>Rs 3000</span>
                 <span class="add-btn">Add to Cart</span>
             </div>
 
             <div class="product">
-                <img src="./Downloads/cloths/3.png" alt="">
+                <img src="./View/Images/cloths/3.png" alt="">
                 <p>Gray-Black Blazer</p>
                 <span>Rs 6000</span>
                 <span class="add-btn">Add to Cart</span>
             </div>
 
             <div class="product">
-                <img src="./Downloads/cloths/4.png" alt="">
+                <img src="./View/Images/cloths/4.png" alt="">
                 <p>Black T-shirt</p>
                 <span>Rs 1000</span>
                 <span class="add-btn">Add to Cart</span>
