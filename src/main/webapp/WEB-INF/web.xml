@@ -25,4 +25,9 @@
 	<param-value>C:/Users/shaky/eclipse-workspace/HamroPasal/src/main/webapp/images/</param-value>
   </context-param>
   
+  <context-param>
+  	<param-name>productImage</param-name>
+  	<param-value>  C:/Users/kafle/OneDrive/Desktop/Eclips/HamroPasal/src/main/webapp/Images/</param-value>
+  </context-param>
+  
 </web-app>

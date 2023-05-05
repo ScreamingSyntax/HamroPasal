@@ -63,6 +63,7 @@
                 <label for="file" id="upload-btn"><i class='bx bx-cloud-upload'></i>Choose Photo</label>
                 <a href="${pageContext.request.contextPath}/index.jsp" class="return">Return to Home</a>
             </div>
+            
         </form>
     </section>
     <script>
