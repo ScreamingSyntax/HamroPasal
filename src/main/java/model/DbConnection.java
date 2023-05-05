@@ -59,7 +59,8 @@ public class DbConnection {
 		return data;
 	}
 	
-	public ResultSet checkLoginDetails(String email, String password) {
+	public String checkLoginDetails(String email, String password) {
+		String userImage= "";
 		try {
 			Connection con = getConnection();
 			String query = "Select * from users where email =? and password=?";
@@ -67,9 +68,12 @@ public class DbConnection {
 			st.setString(1, email);
 			st.setString(2, password);
 			ResultSet table = st.executeQuery();
-
-			if(table.next()) {
-				return table;
+			while(table.next()) {
+				userImage = table.getString(5);
+			}
+			if(userImage!="") {
+				System.out.println(userImage);
+				return userImage;
 			}
 			else {
 				return null;
@@ -99,6 +103,28 @@ public class DbConnection {
 			}
 			
 		} catch (ClassNotFoundException | SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return null;
+	}
+	public ResultSet getUserData(String email) {
+		try {
+			Connection con = getConnection();
+			String query = "Select * from users where email=?";
+			PreparedStatement st = con.prepareStatement(query);
+			st.setString(1,email);
+			ResultSet table = st.executeQuery();
+			if(table.next()) {
+				return table;
+			}
+			else {
+				return null;
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (ClassNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}

@@ -22,7 +22,7 @@
   
   <context-param>
 	<param-name>imagePath</param-name>
-	<param-value>C:/Users/shaky/eclipse-workspace/HamroPasal/src/main/webapp/images/</param-value>
+	<param-value>C:/Users/Administrator/HamroPasal/src/main/webapp/Images/</param-value>
   </context-param>
   
 </web-app>

@@ -16,6 +16,17 @@
     <link href="https://fonts.googleapis.com/css2?family=Mochiy+Pop+One&family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 	<script src="${pageContext.request.contextPath}/View/JS/profile.js"></script>
+	<style>
+	.image-div, .image-text{
+	display:flex;
+	justify-content:center;
+	}
+  .user-image {
+    border: 1px solid #ccc;
+    border-radius: 50%;
+    max-width: 100px;
+  }
+</style>
 </head>
 <body>
     <header>
@@ -47,6 +58,9 @@
                 <i class='bx bxl-xing' onclick="profileClicked()"></i>
             </div>
         	<% String email;
+        	String image;
+        	String fullImagePath;
+        	String finalImage;
         	if(session.getAttribute("loggedInId") == null){ 
         	%>
             	<div class="middle">
@@ -54,12 +68,22 @@
                 	<a href="${pageContext.request.contextPath}/View/Login.jsp">Login as User</a>
             	</div>
         	<%} else{
+        		
         		email = session.getAttribute("loggedInId").toString();
-        	%>
-        		<h1>You are Logged In as<%= email %></h1>
+        		image = session.getAttribute("userImage").toString();
+        		fullImagePath="Images/"+image;
+        		finalImage= fullImagePath.trim();
+        	%> 
+        		<div class="image-div">
+        		<img src="<%= fullImagePath %>" alt="User Image" class="user-image">
+        		</div>
+        		<div class="image-text">
+        		<p>Your email: <%= email %></p>
+        		</div>
         		<%if(session.getAttribute("adminEmail") != null){%>
         			<a href="${pageContext.request.contextPath}/View/AdminPage.jsp">Admin Page</a>
         		<%}%>
+
         		<button onclick='logoutClicked()'>Log Out</button>
         	<%} %>
         	

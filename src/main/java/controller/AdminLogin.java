@@ -23,19 +23,12 @@ public class AdminLogin extends HttpServlet{
 		ResultSet record = con.adminLogin(email, password);
 		
 		if(record != null) {
+			
 			HttpSession session = request.getSession();
 			session.setAttribute("loggedInId", email);
 			session.setAttribute("adminEmail", email);
 			session.setMaxInactiveInterval(5*60);
-			
 			response.sendRedirect("index.jsp");
-//			RequestDispatcher rd = request.getRequestDispatcher("StudentProfile.jsp");
-//			request.setAttribute("table", record);
-//			request.setAttribute("id", id );
-//			request.setAttribute("name", name );
-//			request.setAttribute("gender", gender );
-//			rd.forward(request, response);
-			
 		}
 		else {
 			response.setContentType("text/html");
