@@ -1,5 +1,5 @@
 package controller;
-
+import passwordEncryption.EncryptDecrypt;
 import java.io.IOException;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -23,29 +23,37 @@ public class Login extends HttpServlet{
 		String password = request.getParameter("password");
 		ArrayList<User> one;
 		DbConnection con = new DbConnection();
-		String record = con.checkLoginDetails(email, password);
-		if(record != null) {
-			one= con.getUserDetails(email);
-			HttpSession session = request.getSession();
-			session.setAttribute("loggedInId", email);
-			session.setAttribute("userImage", record);
-			session.setAttribute("userControl", one);
-			session.setMaxInactiveInterval(5*60);
-			response.sendRedirect("index.jsp");
-//			RequestDispatcher rd = request.getRequestDispatcher("StudentProfile.jsp");
-//			request.setAttribute("table", record);
-//			quest.setAttribute("id", id );
-//			request.setAttribute("name", name );
-//			request.setAttribute("gender", gender );
-//			rd.forward(request, response);
-			
+	
+		try {
+			String record = con.checkLoginDetails(email, password);
+			if(record != null) {
+				one= con.getUserDetails(email);
+				HttpSession session = request.getSession();
+				session.setAttribute("loggedInId", email);
+				session.setAttribute("userImage", record);
+				session.setAttribute("userControl", one);
+				session.setMaxInactiveInterval(5*60);
+				response.sendRedirect("index.jsp");
+//				RequestDispatcher rd = request.getRequestDispatcher("StudentProfile.jsp");
+//				request.setAttribute("table", record);
+//				quest.setAttribute("id", id );
+//				request.setAttribute("name", name );
+//				request.setAttribute("gender", gender );
+//				rd.forward(request, response);
+				
+			}
+			else {
+				response.setContentType("text/html");
+				response.sendRedirect("View/Login.jsp");
+//				RequestDispatcher rd = request.getRequestDispatcher("Login.jsp");
+//				request.setAttribute("LoginMessage", "Failed");
+//				rd.forward(request, response);
+			}
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
-		else {
-			response.setContentType("text/html");
-			response.sendRedirect("View/Login.jsp");
-//			RequestDispatcher rd = request.getRequestDispatcher("Login.jsp");
-//			request.setAttribute("LoginMessage", "Failed");
-//			rd.forward(request, response);
-		}
+		
+	
 	}
 }

@@ -1,5 +1,6 @@
 package model;
 
+import passwordEncryption.EncryptDecrypt;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -60,8 +61,9 @@ public class DbConnection {
 		return data;
 	}
 	
-	public String checkLoginDetails(String email, String password) {
+	public String checkLoginDetails(String email, String password) throws Exception {
 		String userImage= "";
+		String userPassword = "";
 		try {
 			Connection con = getConnection();
 			String query = "Select * from users where email =? and password=?";
@@ -70,16 +72,22 @@ public class DbConnection {
 			st.setString(2, password);
 			ResultSet table = st.executeQuery();
 			while(table.next()) {
+				userPassword=table.getString(4);
 				userImage = table.getString(5);
 			}
-			if(userImage!="") {
+			String encryptedPassword = EncryptDecrypt.encrypt(password, EncryptDecrypt.generateKey()).trim();
+			String decryptedPassword1 = EncryptDecrypt.decrypt(encryptedPassword, EncryptDecrypt.generateKey()).trim();
+			System.out.println("User entered password is "+password);
+			System.out.println("Decrypted password is "+decryptedPassword1);
+			if(decryptedPassword1.equals(password)) {
+				System.out.println("Tne");
 				System.out.println(userImage);
 				return userImage;
 			}
 			else {
+				System.out.println("One");
 				return null;
 			}
-			
 		} catch (ClassNotFoundException | SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

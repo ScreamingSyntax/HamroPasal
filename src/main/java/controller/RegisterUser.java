@@ -1,7 +1,7 @@
 package controller;
+import passwordEncryption.EncryptDecrypt;
 import java.io.IOException;
 import java.sql.ResultSet;
-import java.sql.SQLException;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -15,7 +15,6 @@ import javax.servlet.http.Part;
 import model.DbConnection;
 import model.User;
 
-
 @MultipartConfig
 public class RegisterUser extends HttpServlet{
 	/**
@@ -28,15 +27,13 @@ public class RegisterUser extends HttpServlet{
 		String email = request.getParameter("email");
 		String password = request.getParameter("password");
 		String confirmPassword = request.getParameter("confirm-password");
-
 //		String encryptedPassword = AESEncryption.encrypt(password);
 		String userImagePath = "userImage/"+email+".png";
-		
-		User user = new User(name, email, password, userImagePath);
-		DbConnection con = new DbConnection();
-		ResultSet data = con.checkAvailability(email);
-		
 		try {
+			String encryptedPassword = EncryptDecrypt.encrypt(password, EncryptDecrypt.generateKey());
+			User user = new User(name, email, encryptedPassword, userImagePath);
+			DbConnection con = new DbConnection();
+			ResultSet data = con.checkAvailability(email);
 			if(!data.next()) {
 				if(password.equals(confirmPassword)) {
 					String message = con.registerUser(user);
@@ -69,9 +66,9 @@ public class RegisterUser extends HttpServlet{
 					e.printStackTrace();
 				}
 			}
-		} catch (SQLException e) {
+		} catch (Exception e1) {
 			// TODO Auto-generated catch block
-			e.printStackTrace();
+			e1.printStackTrace();
 		}
 	}
 }
