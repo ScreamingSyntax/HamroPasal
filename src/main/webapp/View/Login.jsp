@@ -7,6 +7,8 @@
 <title>Insert title here</title>
 </head>
 <body>
-
+	<form action="../manageproducts" method="post">
+	<input type="submit">
+	</form>
 </body>
 </html>

@@ -5,6 +5,7 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 public class DbConnection {
 	public Connection getConnection() throws ClassNotFoundException, SQLException {
@@ -56,14 +57,14 @@ public class DbConnection {
 		return data;
 	}
 
-	public String addProduct(Product product) {
+	public String addProduct(String name,String quantity,String productPrice,String imagePath) {
 
 		String message = null;
 		try {
-			String name = product.getProductName();
-			String quantity = product.getProductQuantity();
-			String productPrice = product.getProductPrice();
-			String imagePath = product.getProductImagePath();
+//			String name = product.getProductName();
+//			String quantity = product.getProductQuantity();
+//			String productPrice = product.getProductPrice();
+//			String imagePath = product.getProductImagePath();
 			String query = "INSERT INTO products (product_name, product_quantity, product_price) VALUES ('" + name
 					+ "','" + quantity + "','" + productPrice + "');";
 
@@ -103,6 +104,48 @@ public class DbConnection {
 		PreparedStatement st = con.prepareStatement(updateQuery);
 		int rows = st.executeUpdate();
 		return "Successfully added";
+	}
+	
+	
+	@SuppressWarnings("null")
+	public ArrayList<Product> fetchProducts() {
+		String query = "Select * from products";
+		ResultSet data = null;
+		try {
+			Connection con = getConnection();
+			PreparedStatement st = con.prepareStatement(query);
+			data = st.executeQuery();
+		} catch (ClassNotFoundException | SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		System.out.print("His is fetch");
+		ArrayList<Product> product=new ArrayList<>();
+		
+		try {
+			
+			while(data.next()) {
+				
+				String productId=data.getString(1);
+				String productName=data.getString(2);
+				String productImagePath=data.getString(3);
+				String productQuantity=data.getString(4);
+				String productPrice=data.getString(5);
+				System.out.println(productId);
+				System.out.println(productName);
+				System.out.println(productQuantity);
+				System.out.println(productPrice);
+				System.out.println(productImagePath);
+				System.out.println();//				
+				product.add(new Product(productId, productName, productImagePath, productQuantity, productPrice));
+			}
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return product;
 	}
 
 }

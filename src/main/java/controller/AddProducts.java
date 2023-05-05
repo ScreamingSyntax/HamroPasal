@@ -1,10 +1,9 @@
 package controller;
 
 import java.io.IOException;
-import java.sql.ResultSet;
+
 import java.sql.SQLException;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.annotation.WebServlet;
@@ -16,7 +15,6 @@ import javax.servlet.http.Part;
 //import model.AESEncryption;
 import model.DbConnection;
 import model.Product;
-import model.User;
 
 @WebServlet("/addproduct")
 @MultipartConfig
@@ -33,10 +31,10 @@ public class AddProducts extends HttpServlet {
 
 		String productImagePath = "userImage/.png";
 
-		Product product = new Product(prduct_name, product_price, product_quantity, productImagePath);
+//		 = new Product(0,prduct_name, product_price, product_quantity, productImagePath);
 		DbConnection con = new DbConnection();
 
-		String message = con.addProduct(product);
+		String message = con.addProduct(prduct_name,product_price,product_quantity,productImagePath);
 		System.out.println("Successfully added this isid");
 
 		System.out.print(message);
@@ -57,7 +55,7 @@ public class AddProducts extends HttpServlet {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		product = new Product(prduct_name, product_price, product_quantity, localimagepath);
+		Product product= new Product(message,prduct_name, product_price, product_quantity,productImagePath);
 		System.out.println(product.getProductImagePath());
 		System.out.println(product.getProductName());
 		System.out.println(product.getProductPrice());

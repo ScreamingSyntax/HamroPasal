@@ -1,16 +1,23 @@
 package model;
 
 public class Product {
+	String id;
 	String productName;
 	String productQuantity;
 	String productPrice;
 	String productImagePath;
 	
-	public Product(String productName,String productQuantity, String productPrice,String productImagePath) {
+	public Product(String id,String productName,String productQuantity, String productPrice,String productImagePath) {
+		this.id=id;
 		this.productName=productName;
 		this.productQuantity=productQuantity;
 		this.productPrice=productPrice;
 		this.productImagePath=productImagePath;
+		
+		System.out.print("This data are passes");
+	}
+	public String getId() {
+		return id;
 	}
 
 	public String getProductName() {
