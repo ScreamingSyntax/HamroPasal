@@ -10,14 +10,17 @@
     <title>Document</title>
     <link rel="stylesheet" href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/View/CSS/navbar.css">
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/View/CSS/home.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Mochiy+Pop+One&family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-
+	<link rel="stylesheet" href="${pageContext.request.contextPath}/View/CSS/cart.css">
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap" rel="stylesheet">
 </head>
 <body>
+
     <header>
         <span class="logo">Hamro&nbsp;Pasal</span>
         <div class="right">
@@ -42,43 +45,14 @@
             </div>
         </div>
     </header>
-	
-
-    <section class="banner">
-        <img src="${pageContext.request.contextPath}/View/Images/banner.gif" alt="">
+    	<div class="empty-container">
+    <div class="empty-image-placement">
+        <img src="${pageContext.request.contextPath}/View/Images/Cart/empty_cart.png" alt=""  width=30>
+    </div>
+	 <section class="empty-message-section">
+        <h1 id="empty-message">The Cart is Empty</h1>
+        <p id="empty-message">Please Add Items to Cart to Purchase Items</p>
     </section>
-    <section class="products-section">
-        <h2>Products</h2>
-        <div class="products">
-            <div class="product">
-                <img src="./View/Images/cloths/1.png" alt="">
-                <p>Plain Blue T-Shirt</p>
-                <span>Rs 4000</span>
-                <span class="add-btn">Add to Cart</span>
-            </div>
-
-            <div class="product">
-                <img src="./View/Images/cloths/2.png" alt="">
-                <p>Midnight Black T-Shirt</p>
-                <span>Rs 3000</span>
-                <span class="add-btn">Add to Cart</span>
-            </div>
-
-            <div class="product">
-                <img src="./View/Images/cloths/3.png" alt="">
-                <p>Gray-Black Blazer</p>
-                <span>Rs 6000</span>
-                <span class="add-btn">Add to Cart</span>
-            </div>
-
-            <div class="product">
-                <img src="./View/Images/cloths/4.png" alt="">
-                <p>Black T-shirt</p>
-                <span>Rs 1000</span>
-                <span class="add-btn">Add to Cart</span>
-            </div>
-        </div>
-        <a href="./products.html" class="view-more-btn">View More -></a>
-    </section>
+    </div>
 </body>
 </html>

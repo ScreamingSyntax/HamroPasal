@@ -53,7 +53,8 @@
                         <p>Or</p>
                         <span></span>
                     </div>
-                    <a href="./login.html" class="login-btn">Log In</a>
+                    <a href="./login.jsp
+                    " class="login-btn">Log In</a>
                 </div>
             </div>
 
