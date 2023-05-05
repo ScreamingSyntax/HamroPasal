@@ -3,6 +3,8 @@ package controller;
 import java.io.IOException;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -12,19 +14,22 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import model.DbConnection;
+import model.User;
 
 @WebServlet("/login")
 public class Login extends HttpServlet{
 	public void service(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException{
 		String email = request.getParameter("email");
 		String password = request.getParameter("password");
-		
+		ArrayList<User> one;
 		DbConnection con = new DbConnection();
 		String record = con.checkLoginDetails(email, password);
 		if(record != null) {
+			one= con.getUserDetails(email);
 			HttpSession session = request.getSession();
 			session.setAttribute("loggedInId", email);
 			session.setAttribute("userImage", record);
+			session.setAttribute("userControl", one);
 			session.setMaxInactiveInterval(5*60);
 			response.sendRedirect("index.jsp");
 //			RequestDispatcher rd = request.getRequestDispatcher("StudentProfile.jsp");

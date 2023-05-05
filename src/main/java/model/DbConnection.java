@@ -5,6 +5,7 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 public class DbConnection {
 	public Connection getConnection() throws ClassNotFoundException, SQLException {
@@ -108,7 +109,8 @@ public class DbConnection {
 		}
 		return null;
 	}
-	public ResultSet getUserData(String email) {
+	public ResultSet getUserData(String email) 
+	{
 		try {
 			Connection con = getConnection();
 			String query = "Select * from users where email=?";
@@ -130,4 +132,26 @@ public class DbConnection {
 		}
 		return null;
 	}
+	public ArrayList<User> getUserDetails(String email) {
+		ArrayList<User> users = new ArrayList<>();
+	    try {
+	        Connection con = getConnection();
+	        String query = "SELECT * FROM users WHERE email=?";
+	        PreparedStatement st = con.prepareStatement(query);
+	        st.setString(1, email);
+	        ResultSet table = st.executeQuery();
+	        while (table.next()) {
+	        	String name = table.getString("Name");
+	            String userEmail = table.getString("Email");
+	            String userPassword = table.getString("Password");
+	            String image = table.getString("Image");
+	            User user = new User(name,userEmail, userPassword, image);
+	            users.add(user);
+	        }
+	    } catch (ClassNotFoundException | SQLException e) {
+	        e.printStackTrace();
+	    }
+	    return users;
+	}
+
 }

@@ -1,5 +1,8 @@
+<%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+    
 
 <!DOCTYPE html>
 <html lang="en">
@@ -25,6 +28,22 @@
     border: 1px solid #ccc;
     border-radius: 50%;
     max-width: 100px;
+  }
+   ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  li {
+    display: block;
+    margin-bottom: 10px;
+    font-size: 18px;
+    color: #333;
+  }
+  
+  li:first-child {
+    font-weight: bold;
   }
 </style>
 </head>
@@ -61,6 +80,7 @@
         	String image;
         	String fullImagePath;
         	String finalImage;
+        
         	if(session.getAttribute("loggedInId") == null){ 
         	%>
             	<div class="middle">
@@ -68,18 +88,30 @@
                 	<a href="${pageContext.request.contextPath}/View/Login.jsp">Login as User</a>
             	</div>
         	<%} else{
-        		
+     
         		email = session.getAttribute("loggedInId").toString();
         		image = session.getAttribute("userImage").toString();
         		fullImagePath="Images/"+image;
         		finalImage= fullImagePath.trim();
         	%> 
+        		<c:set var="userList" value="${sessionScope.userControl}" />
+
+        		<c:url var="imagePath" value="${userList[0].imagePath}" />
         		<div class="image-div">
-        		<img src="<%= fullImagePath %>" alt="User Image" class="user-image">
+				<img src="Images/${imagePath}" alt="User Image" class="user-image">
         		</div>
-        		<div class="image-text">
-        		<p>Your email: <%= email %></p>
-        		</div>
+        		<div style="text-align: center;">
+        		<c:forEach var="user" items="${sessionScope.userControl}">
+        		
+        		</c:forEach>
+        		<ul>
+  				<c:forEach var="user" items="${sessionScope.userControl}">
+    			<li>${user.getName()}</li>
+    			<li>${user.getEmail()}</li>
+  				</c:forEach>
+				</ul>
+		</div>
+        		
         		<%if(session.getAttribute("adminEmail") != null){%>
         			<a href="${pageContext.request.contextPath}/View/AdminPage.jsp">Admin Page</a>
         		<%}%>
