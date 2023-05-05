@@ -1,3 +1,4 @@
+@charset "ISO-8859-1";@charset "ISO-8859-1";
 *{
     margin: 0;
     padding: 0;
@@ -80,4 +81,55 @@ input[type="submit"]{
     display: flex;
     align-items: center;
     gap: 30px;
+}
+
+.profile-section{
+	height: 100vh;
+	width: 350px;
+	position: fixed;
+    right: -100%;
+    top: 0;
+    background-color: rgb(225, 225, 225);
+    padding: 0 30px;
+    transition: all 0.7s ease;
+}
+.profile-section .top{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 15px 0;
+    color: var(--mainColor);
+}
+.profile-section .top h1{
+    font-size: 24px;
+}
+.profile-section .top i{
+    font-size: 30px;
+    cursor: pointer;
+}
+.profile-section .middle{
+    padding: 20px;
+    margin-top: 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+}
+.profile-section .middle a{
+    width: 100%;
+    border: 2px solid var(--mainColor);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px 0;
+    text-decoration: none;
+    color: var(--mainColor);
+}
+.profile-section .middle a:hover{
+    background-color: var(--mainColor);
+    color: white;
+}
+.profile-section.active{
+    right: 0;
 }
