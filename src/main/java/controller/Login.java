@@ -24,6 +24,7 @@ public class Login extends HttpServlet{
 		
 		if(record != null) {
 			HttpSession session = request.getSession();
+			session.removeAttribute("adminEmail");
 			session.setAttribute("loggedInId", email);
 			session.setMaxInactiveInterval(5*60);
 			

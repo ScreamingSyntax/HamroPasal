@@ -42,6 +42,8 @@
                 </div>
             </div>
         </div>
+            	shehe
+    <%=session.getAttribute("adminEmail") %>
         <div class="profile-section">
         	<div class="top">
                 <h1>User Profile</h1>

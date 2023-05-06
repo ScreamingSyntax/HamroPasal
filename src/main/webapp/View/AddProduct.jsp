@@ -57,6 +57,8 @@
     </section>
     
     <div class="add-product-form">
+    	shehe
+    <%=session.getAttribute("adminEmail") %>
         <form action="../addproduct" method="post" enctype="multipart/form-data">
             <div class="top">
                 <div class="left2">
