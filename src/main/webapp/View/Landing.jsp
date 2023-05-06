@@ -47,7 +47,7 @@
                 <h1>User Profile</h1>
                 <i class='bx bxl-xing' onclick="profileClicked()"></i>
             </div>
-        	<% String email;
+        	<% String email=null;
         	if(session.getAttribute("loggedInId") == null){ 
         	%>
             	<div class="middle">
@@ -96,15 +96,18 @@
         <h2>Products</h2>
         <div class="products">
         	<c:forEach var="pd" items="${productList}">
+      
 				<div class="product">
                 	<img src="${pageContext.request.contextPath}/Images/${pd.productImagePath}" alt="${pd.productName}">
                 	<p>${pd.productName}</p>
                 	<span>${pd.productPrice }</span>
-                	<span class="add-btn">Add to Cart</span>
+           
+                	<a href="${pageContext.request.contextPath}/addCart?imagePath=${pd.productImagePath}&email=<%=email %>"><span class="add-btn">Add to Cart</span></a>
             	</div>
 			</c:forEach>
         </div>
         <a href="./products.html" class="view-more-btn">View More -></a>
     </section>
+    
 </body>
 </html>

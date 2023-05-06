@@ -117,10 +117,6 @@ public class DbConnection {
 
 		String message = null;
 		try {
-//			String name = product.getProductName();
-//			String quantity = product.getProductQuantity();
-//			String productPrice = product.getProductPrice();
-//			String imagePath = product.getProductImagePath();
 			String query = "INSERT INTO product (product_name, product_quantity, product_price) VALUES ('" + name
 					+ "','" + quantity + "','" + productPrice + "');";
 			
@@ -195,5 +191,19 @@ public class DbConnection {
 				e.printStackTrace();
 			}
 		}
+	}
+	public ResultSet fetchProductByImage(String imagePath){
+		try {
+			Connection con = getConnection();
+			String query = "Select * from product where product_image=?";
+			PreparedStatement st = con.prepareStatement(query);
+			st.setString(1,imagePath);
+			ResultSet table = st.executeQuery();
+			return table;
+		} catch (ClassNotFoundException | SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return null;
 	}
 }
