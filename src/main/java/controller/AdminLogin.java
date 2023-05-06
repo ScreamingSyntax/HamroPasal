@@ -39,7 +39,7 @@ public class AdminLogin extends HttpServlet{
 		}
 		else {
 			response.setContentType("text/html");
-			response.sendRedirect("View/Login.jsp");
+			response.sendRedirect("View/AdminLogin.jsp");
 //			RequestDispatcher rd = request.getRequestDispatcher("Login.jsp");
 //			request.setAttribute("LoginMessage", "Failed");
 //			rd.forward(request, response);

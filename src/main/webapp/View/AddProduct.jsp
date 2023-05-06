@@ -57,29 +57,29 @@
     </section>
     
     <div class="add-product-form">
-        <form action="">
+        <form action="../addproduct" method="post" enctype="multipart/form-data">
             <div class="top">
                 <div class="left2">
                     <span>
                         <label for="prod-name">Product Name:</label><br>
-                        <input type="text" placeholder="Product Name" id="prod-name" name="prod-name">
+                        <input type="text" placeholder="Product Name" id="prod-name" name="product_name">
                     </span>
     
                     <span>
                         <label for="prod-price">Product Price:</label><br>
-                        <input type="number" placeholder="Product Price" id="prod-price" name="prod-price">
+                        <input type="number" placeholder="Product Price" id="prod-price" name='product_price'>
                     </span>
     
                     <span>
                         <label for="prod-quantity">Product Quantity:</label><br>
-                        <input type="number" placeholder="Product Quantity" id="prod-quantity" name="prod-quantity">
+                        <input type="number" placeholder="Product Quantity" id="prod-quantity" name='product_quantity'>
                     </span>
                 </div>
                 <div class="right2">
                     <label for="prod-image" class="img-section">
-                        <img src="" alt="">
+                        <img src="" alt="" class="showImage">
                     </label>
-                    <input type="file" id="prod-image" name="prod-image">
+                    <input type="file" id = "prod-image file" name="image" class="imageChooser" value ="profile-eg.png" onchange="onImageChange()"/>
                 </div>
             </div>
             <div class="bottom">
@@ -88,5 +88,12 @@
             </div>
         </form>
     </div>
+    <script>
+		function onImageChange(){
+			var imageChooser = document.querySelector(".imageChooser");
+			var showImage = document.querySelector(".showImage");
+			showImage.src = URL.createObjectURL(imageChooser.files[0]);
+		}
+	</script>
 </body>
 </html>

@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.Part;
 
+import model.AESEncryption;
 //import model.AESEncryption;
 import model.DbConnection;
 import model.User;
@@ -29,10 +30,10 @@ public class RegisterUser extends HttpServlet{
 		String password = request.getParameter("password");
 		String confirmPassword = request.getParameter("confirm-password");
 
-//		String encryptedPassword = AESEncryption.encrypt(password);
+		String encryptedPassword = AESEncryption.encrypt(password);
 		String userImagePath = "userImage/"+email+".png";
 		
-		User user = new User(name, email, password, userImagePath);
+		User user = new User(name, email, encryptedPassword, userImagePath);
 		DbConnection con = new DbConnection();
 		ResultSet data = con.checkAvailability(email);
 		
