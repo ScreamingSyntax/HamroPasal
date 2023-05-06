@@ -11,11 +11,14 @@
 			<attribute name="module" value="true"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.web.container"/>
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.module.container"/>
-	<classpathentry kind="con" path="org.eclipse.jst.server.core.container/org.eclipse.jst.server.tomcat.runtimeTarget/apache-tomcat-8.0.3"/>
 	<classpathentry kind="lib" path="C:/Users/kafle/Dropbox/PC (4)/Downloads/taglibs-standard-impl-1.2.5.jar"/>
 	<classpathentry kind="lib" path="C:/Users/kafle/Dropbox/PC (4)/Downloads/jstl-1.2 (2).jar"/>
 	<classpathentry kind="lib" path="C:/Users/kafle/OneDrive/Desktop/Hamro Pasal/HamroPasal/jar_files/mysql-connector-java-8.0.30.jar"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/Product"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/TryOne"/>
+	<classpathentry kind="lib" path="mysql-connector-java-8.0.30.jar"/>
+	<classpathentry kind="con" path="org.eclipse.jst.server.core.container/org.eclipse.jst.server.tomcat.runtimeTarget/apache-tomcat-8.0.36"/>
+	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.web.container"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>

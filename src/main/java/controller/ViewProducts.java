@@ -18,16 +18,14 @@ import model.Product;
 /**
  * Servlet implementation class ViewProducts
  */
-@WebServlet("/manageproducts")
+@WebServlet("../manageproducts")
 public class ViewProducts extends HttpServlet {
 	private static final long serialVersionUID = 1L;
    
 
 	public void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		ArrayList<Product> product = null;
-		
-		product=new DbConnection().fetchProducts();
+		ArrayList<Product> product = new DbConnection().fetchProducts();
 		request.setAttribute("productList",product);
 		RequestDispatcher rd = request.getRequestDispatcher("View/manageproducts.jsp");
 		rd.forward(request, response);

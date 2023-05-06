@@ -107,7 +107,7 @@ public class DbConnection {
 	}
 	
 	
-	@SuppressWarnings("null")
+//	@SuppressWarnings("null")
 	public ArrayList<Product> fetchProducts() {
 		String query = "Select * from products";
 		ResultSet data = null;
@@ -138,7 +138,7 @@ public class DbConnection {
 				System.out.println(productPrice);
 				System.out.println(productImagePath);
 				System.out.println();//				
-				product.add(new Product(productId, productName, productImagePath, productQuantity, productPrice));
+				product.add(new Product(productId, productName, productQuantity, productPrice,productImagePath));
 			}
 			
 		} catch (SQLException e) {
@@ -146,6 +146,65 @@ public class DbConnection {
 			e.printStackTrace();
 		}
 		return product;
+	}
+	
+	public String deleteParameter(String id) throws SQLException {
+		String query="Delete from products where product_id='"+id+"';";
+		System.out.print(query);
+		try {
+//			con = getConnection();
+//			PreparedStatement st = con.prepareStatement(query);
+//			int rows=st.executeQuery();
+			Connection con = getConnection();
+			PreparedStatement st = con.prepareStatement(query);
+			int rows = st.executeUpdate();
+			
+			return "Successfully Deleted";
+
+
+		} catch (ClassNotFoundException | SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return null;
+	}
+	public Product fetchOneRow(String id) {
+		String query="Select * from products where product_id='"+id+"'";
+		ResultSet data = null;
+		try {
+			Connection con = getConnection();
+			PreparedStatement st = con.prepareStatement(query);
+			data = st.executeQuery();
+		} catch (ClassNotFoundException | SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		System.out.print("His is fetch");	
+		Product product;
+try {
+			
+			while(data.next()) {
+				
+				String productId=data.getString(1);
+				String productName=data.getString(2);
+				String productImagePath=data.getString(3);
+				String productQuantity=data.getString(4);
+				String productPrice=data.getString(5);
+				System.out.print(productId);
+				System.out.print(productName);
+				System.out.print(productImagePath);
+				System.out.print(productQuantity);
+				System.out.print(productPrice);
+				product=new Product( id, productName,productQuantity,productPrice,productImagePath);
+				return  product;
+
+			}
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+return null;
 	}
 
 }

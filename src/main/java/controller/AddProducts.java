@@ -39,7 +39,7 @@ public class AddProducts extends HttpServlet {
 
 		System.out.print(message);
 
-		String localimagepath = "/productsImage/" + message + ".png";
+		String localimagepath = "productsImage/" + message + ".png";
 		Part image = request.getPart("image");
 		System.out.print(request.getPart("image"));
 		String imagePath = getServletContext().getInitParameter("productImage");
