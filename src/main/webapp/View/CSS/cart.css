@@ -1,0 +1,71 @@
+@charset "UTF-8";@charset "UTF-8";
+
+@charset "ISO-8859-1";
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap');
+
+.empty-container{
+	height:80vh;
+	display:flex;
+	flex-direction:column;
+	align-items:center;
+	justify-content:center;
+}
+.empty-image-placement{
+	display: flex;
+	justify-content: center;
+}
+
+.empty-image-placement img{
+	width:50%;
+}
+.cart-section{
+    width: 100%;
+    height: 100vh;
+    padding: 70px 80px;
+}
+.cart-section .head-text h2{
+    font-size: 25px;
+    color: black;
+    font-family: 'Poppins', sans-serif;
+}
+.cart-section .body-text h2{
+	font-size:25px;
+	color: black;
+	font-weight:normal;
+}
+.cart-head{
+    display: flex;
+    justify-content: space-between;
+    flex-flow: wrap;
+    margin-top: 20px;
+}
+.cart-body{
+	display:flex;
+	justify-content:space-between;
+	flex-flow:wrap;
+	margin-top:20px;
+}
+.head-text{
+    width: calc(100% - 80%);
+    background-color: #F6F6F6;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding: 20px 0;
+}
+
+.body-text{
+	 width: calc(100% - 80%);
+    background-color: #F6F6F6;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding: 20px 0;
+}
+.empty-message-section h1,p{
+	display:flex;
+	justify-content:center;
+	font-size:30px;
+}

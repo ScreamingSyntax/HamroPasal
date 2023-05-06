@@ -1,0 +1,45 @@
+@charset "UTF-8";@charset "UTF-8";
+
+@charset "ISO-8859-1";
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap');
+
+
+.cart-section{
+    width: 100%;
+    height: 100vh;
+    padding: 70px 80px;
+}
+.cart-section .body-text h2{
+	font-size:20px;
+	color: black;
+	font-weight:normal;
+}
+.cart-body{
+	display:flex;
+	justify-content:space-between;
+	flex-flow:wrap;
+	margin-top:40px;
+}
+.head-text{
+    width: calc(100% - 80%);
+    background-color: #F6F6F6;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding: 20px 0;
+}
+
+.body-text{
+	 width: calc(100% - 80%);
+    background-color: #F6F6F6;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding: 20px 0;
+}
+
+#searh-img{
+  	max-width: 50px;
+}
