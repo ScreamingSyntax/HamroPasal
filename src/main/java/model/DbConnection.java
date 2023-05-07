@@ -88,7 +88,72 @@ public class DbConnection {
 		}
 		return null;
 	}
+	
+	public User fetchByEmail(String email) {
+		Connection con = null;
+		User user = null;
+		try {
+			con = getConnection();
+			String query = "Select * from Users where email =?";
+			PreparedStatement st = con.prepareStatement(query);
+			st.setString(1, email);
+			ResultSet table = st.executeQuery();
+			
+			if(table.next()) {
+				String name = table.getString(2);
+				String email2 = table.getString(3);
+				String encryptedPassword = table.getString(4);
+				String decryptedPassword = AESEncryption.decrypt(encryptedPassword);
+				String imagePath = table.getString(5);
+				
+				user = new User(name, email2, decryptedPassword, imagePath);
+			}
+			else {
+				return null;
+			}
+			
+		} catch (ClassNotFoundException | SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return user;
+	}
 
+	public String updateProfile(User user) {
+		String message;
+		try {
+			
+			String query="UPDATE users set name=?, password=?, image=? where email = ?";
+		
+			Connection connection=getConnection();
+			
+			PreparedStatement st=connection.prepareStatement(query);
+			
+			st.setString(1, user.getName());
+			st.setString(2, user.getPassword());
+			st.setString(3, user.getImagePath());
+			st.setString(4, user.getEmail());
+			
+			int rows = st.executeUpdate();
+			if(rows>=1) {
+				message = "Successfully Added";
+			}
+			else {
+				message = "Something is missing";
+			}
+			connection.close();
+		}
+		catch(ClassNotFoundException e){
+			e.printStackTrace();
+			message = e.getMessage();	
+		}
+		catch(SQLException e) {
+			e.printStackTrace();
+			message = e.getMessage();
+		}
+		return message;
+	}
+	
 	public ResultSet adminLogin(String email, String password) {
 		try {
 			Connection con = getConnection();
@@ -111,7 +176,6 @@ public class DbConnection {
 		}
 		return null;
 	}
-	
 	
 	public String addProduct(String name,String quantity,String productPrice,String imagePath) {
 
@@ -159,6 +223,77 @@ public class DbConnection {
 		PreparedStatement st = con.prepareStatement(updateQuery);
 		int rows = st.executeUpdate();
 		return "Successfully added";
+	}
+	
+	public int getMaxId() {
+		Connection con = null;
+		ResultSet id = null;
+		int order_id = 0;
+		try {
+			con = getConnection();
+			String query = "Select max(Order_Id) from orders";
+			PreparedStatement st = con.prepareStatement(query);
+			id = st.executeQuery();
+			while(id.next()) {
+				if(id.getString(1)!=null) {
+					order_id = Integer.parseInt(id.getString(1));
+				}
+			}
+		} catch (ClassNotFoundException | SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return order_id+1;
+	}
+	
+	public int getUserId(String email) {
+		Connection con = null;
+		ResultSet id = null;
+		int user_id = 0;
+		try {
+			con = getConnection();
+			String query = "Select Id from users where email = ?";
+			PreparedStatement st = con.prepareStatement(query);
+			st.setString(1, email);
+			id = st.executeQuery();
+			while(id.next()) {
+				user_id = Integer.parseInt(id.getString(1));
+			}
+		} catch (ClassNotFoundException | SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return user_id;
+	}
+	
+	public Product fetchProd(String id) {
+		Connection con = null;
+		Product product = null;
+		try {
+			con = getConnection();
+			String query = "Select * from Product where product_id =?";
+			PreparedStatement st = con.prepareStatement(query);
+			st.setString(1, id);
+			ResultSet table = st.executeQuery();
+			
+			if(table.next()) {
+				String prod_id = table.getString(1);
+				String name = table.getString(2);
+				String price = table.getString(3);
+				String quantity = table.getString(4);
+				String imagePath = table.getString(5);
+				
+				product = new Product(prod_id, name, price, quantity, imagePath);
+			}
+			else {
+				return null;
+			}
+			
+		} catch (ClassNotFoundException | SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return product;
 	}
 	
 	public ArrayList<Product> fetchProducts() {

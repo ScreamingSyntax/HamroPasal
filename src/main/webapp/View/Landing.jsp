@@ -34,22 +34,20 @@
                 <label for="search"><i class='bx bx-search-alt-2'></i></label>
             </form>
             <div class="icons">
-                <div class="cart">
+                <div class="cart" onclick="cartClicked()">
                     <img src="${pageContext.request.contextPath}/View/Images/shopping-cart.png" alt="">
                 </div>
                 <div class="profile" onclick="profileClicked()">
-                    <a href="#"><img src="${pageContext.request.contextPath}/View/Images/user.png" alt=""></a>
+                    <img src="${pageContext.request.contextPath}/View/Images/user.png" alt="">
                 </div>
             </div>
         </div>
-            	shehe
-    <%=session.getAttribute("adminEmail") %>
         <div class="profile-section">
         	<div class="top">
                 <h1>User Profile</h1>
                 <i class='bx bxl-xing' onclick="profileClicked()"></i>
             </div>
-        	<% String email;
+        	<% String email = null;
         	if(session.getAttribute("loggedInId") == null){ 
         	%>
             	<div class="middle">
@@ -64,9 +62,30 @@
         			<a href="${pageContext.request.contextPath}/index.jsp">Return to Home</a>
         			<a href="${pageContext.request.contextPath}/View/AdminPage.jsp">Admin Page</a>
         		<%}%>
-        		<button onclick='logoutClicked()'>Log Out</button>
+        		<a href="${pageContext.request.contextPath}/editProfile?email=<%=email%>">Edit Profile</a>
+        		<a href="${pageContext.request.contextPath}/logout">Log Out</a>
         	<%} %>
         	
+        </div>
+        
+        <div class="cart-section">
+        	<div class="top">
+                <h1>Cart Items</h1>
+                <i class='bx bxl-xing' onclick="profileClicked()"></i>
+            </div>
+        	<div class="middle" id="middle">
+				<div class="item">
+					<img src="${pageContext.request.contextPath}/images/productImage/10.png"/>
+					<span>
+						<h3>Black Shirt</h3>
+						<p>Price: 999</p>
+					</span>
+				</div>
+            </div>
+        	<div class="lower">
+        		<span><p class="index">Total Price: </p><p class="total-price"></p></span>
+        		<a href="" id = "order" onclick="clicked()">Order Now!</a>
+        	</div>
         </div>
         <script>
             const profileClicked = () =>{
@@ -81,12 +100,43 @@
                 })
             }
             
-            const logoutClicked = () =>{
-            	<%session.removeAttribute("loggedInId"); 
-            	  session.removeAttribute("adminEmail");
-            	%>
-            	window.location.href = "index.jsp";
+            const cartClicked = () =>{
+                const btn = document.querySelector(".cart")
+                const mainDiv = document.querySelector(".cart-section")
+                const cross = document.querySelector(".cart-section .top i")
+                btn.addEventListener("click", ()=>{
+                    mainDiv.classList.add("active");
+                })
+                cross.addEventListener("click", ()=>{
+                    mainDiv.classList.remove("active");
+                })
+                
+                
+                let cartDisplay = document.getElementById("middle");
+				let totalPriceDisp = document.querySelector(".lower .total-price");
+                // Create an empty string to store the HTML content
+                let cartHtml = "";
+				let totalPrice = 0;
+                // Loop through the cart object and generate HTML for each item
+                cartItems.forEach((item) => {
+                  cartHtml += `
+                	<div class="item">
+  						<img src="/HamroPasal/Images/productImage/10.png"/>
+  						<span>
+  							<h3>`+item.name+`</h3>
+	  						<p>Price: Rs. `+item.price+`</p>
+	  					</span>
+  					</div>
+                  `;
+                  totalPrice += parseInt(item.price);
+                })
+                
+
+                // Set the innerHTML of the cart display element to the generated HTML content
+                cartDisplay.innerHTML = cartHtml;
+                totalPriceDisp.innerText = totalPrice;
             }
+            
         </script>
     </header>
 
@@ -99,14 +149,45 @@
         <div class="products">
         	<c:forEach var="pd" items="${productList}">
 				<div class="product">
-                	<img src="${pageContext.request.contextPath}/Images/${pd.productImagePath}" alt="${pd.productName}">
+                	<img src="${pageContext.request.contextPath}/images/${pd.productImagePath}" alt="${pd.productName}">
                 	<p>${pd.productName}</p>
                 	<span>${pd.productPrice }</span>
-                	<span class="add-btn">Add to Cart</span>
+                	<span class="add-btn" onclick="addToCart('${pd.id}', '${pd.productName}', '${pd.productPrice}', '${pd.productImagePath}')">Add to Cart</span>
             	</div>
 			</c:forEach>
         </div>
-        <a href="./products.html" class="view-more-btn">View More -></a>
     </section>
+    <script>
+    	var itemsIds = []
+    	var cartItems = []
+    	const addToCart = (id, name, price, image) => {
+    		itemsIds.push(id)
+    		cartItem = {
+    			id: id,
+    			name: name,
+    			price: price,
+    			image: image
+    		}
+    		cartItems.push(cartItem)
+    		cartClicked()
+    	}
+    	var items = ""
+    	const orderNow = () =>{
+    		itemsIds.forEach((item)=>{
+    			items = items.concat(item,":")
+    		})
+    		return items;
+    	}
+    	const clicked = () =>{
+    		if(orderNow() != ""){
+    			document.getElementById("order").href="./order?items="+orderNow();
+    		}
+    		else{
+    			alert("Your Cart Is Empty");
+    		}
+    		//console.log(orderNow())
+    	}
+
+    </script>
 </body>
 </html>

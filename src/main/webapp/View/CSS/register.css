@@ -135,7 +135,9 @@ input[type="submit"]{
 }
 .showImage{
    	border-radius: 50%;
-   	border: 10px solid black;
+   	width: 200px;
+   	height: 200px;
+   	border: 2px dashed black;
 }
 
 #file{
