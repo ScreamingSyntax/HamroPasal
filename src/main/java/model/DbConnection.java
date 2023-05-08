@@ -331,4 +331,41 @@ public class DbConnection {
 			}
 		}
 	}
+	
+	public ArrayList<Product> searchByName(String name) {
+		ArrayList<Product> productList = new ArrayList<Product>();
+		Connection conn = null;
+		try {
+			conn = getConnection();
+			String query = "Select * from product where Product_Name LIKE '%"+name+"%'";
+			PreparedStatement st = conn.prepareStatement(query);
+			ResultSet data = st.executeQuery();
+			
+			while(data.next()) {
+				String productId=data.getString(1);
+				String productName=data.getString(2);
+				String productImagePath=data.getString(3);
+				String productQuantity=data.getString(4);
+				String productPrice=data.getString(5);
+				
+				productList.add(new Product(productId, productName, productImagePath, productQuantity, productPrice));
+				
+			}
+			
+			return productList;
+		} 
+		catch (ClassNotFoundException | SQLException e) {
+			e.printStackTrace();
+			return null;
+		}
+		finally{
+			try {
+				conn.close();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+	}
+	
 }

@@ -13,12 +13,13 @@ import javax.servlet.http.HttpServletResponse;
 import model.DbConnection;
 import model.Product;
 
-@WebServlet("/landing")
-public class View extends HttpServlet{
+@WebServlet("/search")
+public class Search extends HttpServlet{
 	public void service(HttpServletRequest req, HttpServletResponse res) {
 		DbConnection con = new DbConnection();
-		ArrayList<Product> productList = con.fetchProducts();
-		RequestDispatcher rd = req.getRequestDispatcher("View/Landing.jsp");
+		String name = req.getParameter("item-name");
+		ArrayList<Product> productList = con.searchByName(name);
+		RequestDispatcher rd = req.getRequestDispatcher("View/SearchPage.jsp");
 		req.setAttribute("productList", productList);
 		try {
 			rd.forward(req, res);

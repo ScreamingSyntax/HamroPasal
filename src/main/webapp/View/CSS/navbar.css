@@ -211,3 +211,61 @@ input[type="submit"]{
 .cart-section.active{
     right: 0;
 }
+
+
+.search-section{
+	height: 100vh;
+	width: 350px;
+	position: relative;
+    right: -100%;
+    top: 0;
+    background-color: rgb(225, 225, 225);
+    padding: 0 30px;
+    transition: all 0.7s ease;
+}
+.search-result{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 420px;
+    overflow-y: auto;
+    margin-bottom: 10px;
+    position: absolute;
+    top: -60%;
+    left: 700px;
+    background: rgba(255, 255, 255, 0.3);
+    padding: 20px;
+    transition: all 0.5s ease;
+    opacity: 0;
+}
+.search-result .item{
+	width: 100%;
+	display: flex;
+	align-items: center;
+	background: rgba(255,255,255,0.5);
+	padding: 10px;
+	border-radius: 8px;
+	margin: 10px 0;
+}
+.search-result .item img{
+	width: 70px;
+	height: 70px;
+	margin-right: 20px;
+}
+.search-result.active{
+	opacity: 1;
+	top: 70px;
+}
+.search-head{
+	width: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	padding: 0 30px;
+	color: black;
+	font-weight: 900;
+	font-size: 20px;
+}
+.cart-section.active{
+    right: 0;
+}

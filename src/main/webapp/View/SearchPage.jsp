@@ -34,11 +34,25 @@
                 <label for="search"><i class='bx bx-search-alt-2'></i></label>
             </form>
             
+            <div class="search-result active">
+            	<div class="search-head">
+            		<p>Search List</p>
+            		<a href="/HamroPasal/landing"><i class='bx bxl-xing' onclick="crossClicked()"></i></a>
+            	</div>
+            	<c:forEach var="pd" items="${productList}">
+            		<div class="item">
+						<img src="${pageContext.request.contextPath}/Images/${pd.productImagePath}" alt="${pd.productName}"/>
+						<span>
+							<h3>${pd.productName}</h3>
+							<p>Price: Rs. ${pd.productPrice}</p>
+						</span>
+					</div>
+				</c:forEach>
+            </div>
             
             <script>
             	const searchClicked = ()=>{
-            		document.querySelector(".search-result").style.top="70px";
-            		document.querySelector(".search-result").style.opacity="1";
+            		document.querySelector(".search-result").classList.add("active")
             	}
             </script>
             <div class="icons">
@@ -82,7 +96,13 @@
                 <i class='bx bxl-xing' onclick="profileClicked()"></i>
             </div>
         	<div class="middle" id="middle">
-				
+				<div class="item">
+					<img src="${pageContext.request.contextPath}/images/productImage/10.png"/>
+					<span>
+						<h3>Black Shirt</h3>
+						<p>Price: 999</p>
+					</span>
+				</div>
             </div>
         	<div class="lower">
         		<span><p class="index">Total Price: </p><p class="total-price"></p></span>
